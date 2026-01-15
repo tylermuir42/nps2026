@@ -17,7 +17,7 @@ Use this as a starting point to complete the WDD 231 personal activity. We will 
 
 - `npm run build` to build final files when you are ready to turn in.
 
-Build Version Link: https://6960344bb29438892836a9a9--chimerical-sable-a0bbbe.netlify.app/
+Build Version Link:
 https://chimerical-sable-a0bbbe.netlify.app/
 
 
