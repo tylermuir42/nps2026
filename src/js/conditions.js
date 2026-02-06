@@ -18,7 +18,7 @@ import setHeaderFooter from "./setHeaderFooter.mjs";
 function setAlerts(alerts){
     const alertsContainer = document.querySelector(".alerts > ul");
     alertsConstainer.innerHTML = "";
-    const html = alerts.map(alertTeplate);
+    const html = alerts.map(alertTemplate);
     alertsContainer.insertAdjacentHTML("beforeend", html.join(""));
 }
 
@@ -31,7 +31,7 @@ function setVisitorCenters(centers){
 function setActivites(activities){
     const activitiesContainer = document.querySelector(".activites ul");
     const html = activityListTemplate(activities);
-    actitivites.insertAdjacentHTML("afterbegin", html);
+    activitiesContainer.insertAdjacentHTML("afterbegin", html);
 }
 
 async function init(){
