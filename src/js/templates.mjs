@@ -58,3 +58,15 @@ export function alertTemplate(alert){
     <p>${alert.description}</p>
   </div></li>`;
 }
+
+export function visitorCenterTemplate(center){
+  return `<li class="visitor-center">
+  <h4>${center.name}</h4>
+  <p>${center.description}</p>
+  <p>${center.directionsInfo}</p>
+  </li>`;
+}
+
+export function activityListTemplate(activities){
+  return activities.map((activity) => `<li>${activity.name}</li>`).join("");
+}
