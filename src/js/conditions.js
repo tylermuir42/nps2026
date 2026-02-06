@@ -17,7 +17,7 @@ import setHeaderFooter from "./setHeaderFooter.mjs";
 
 function setAlerts(alerts){
     const alertsContainer = document.querySelector(".alerts > ul");
-    alertsConstainer.innerHTML = "";
+    alertsContainer.innerHTML = "";
     const html = alerts.map(alertTemplate);
     alertsContainer.insertAdjacentHTML("beforeend", html.join(""));
 }
@@ -28,8 +28,8 @@ function setVisitorCenters(centers){
     centersContainer.insertAdjacentHTML("beforeend", html.join(""));
 }
 
-function setActivites(activities){
-    const activitiesContainer = document.querySelector(".activites ul");
+function setActivities(activities){
+    const activitiesContainer = document.querySelector(".activities ul");
     const html = activityListTemplate(activities);
     activitiesContainer.insertAdjacentHTML("afterbegin", html);
 }
@@ -39,10 +39,10 @@ async function init(){
     const alerts = await getParkAlerts(parkData.parkCode);
     const visitorCenters = await getParkVisitorCenters(parkData.parkCode);
 
-    setActivites(parkData.activities);
+    setActivities(parkData.activities);
     setVisitorCenters(visitorCenters);
-    setHeaderFooter(parkData);
     setAlerts(alerts);
+    setHeaderFooter(parkData);
 }
 
 init();
