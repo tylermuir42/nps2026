@@ -27,25 +27,19 @@ async function init() {
   setParkInfoLinks(links);
 }
 
-function enableNavigation(){
+function enableNavigation() {
   const menuButton = document.querySelector("#global-nav-toggle");
+  const globalNav = document.querySelector(".global-nav");
 
-  menuButton.addEventListener("click", (e) => {
-    let target = eval.target;
+  if (!menuButton || !globalNav) return;
 
-  document.querySelector(".global-nav").classList.toggle("show");
-  if(target.tagName !== "BUTTON") {
-    target = target.closest("button");
-  }
-
-  if(document.querySelector(".global-nav").classList.contains("show")){
-    target.setAttribute("aria-expanded", "true");
-  } else {
-    target.setAttribute("aria-expanded", "false");
-  }
-
-  console.log("toggle");
-});
+  menuButton.addEventListener("click", () => {
+    globalNav.classList.toggle("show");
+    const isOpen = globalNav.classList.contains("show");
+    menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuButton.setAttribute("aria-label", isOpen ? "Close Menu" : "Open Menu");
+  });
 }
 
 init();
+enableNavigation();
