@@ -14,6 +14,7 @@ import {
 } from "./templates.mjs";
 
 import setHeaderFooter from "./setHeaderFooter.mjs";
+import { enableNavigation } from "./navigation.mjs";
 
 function setAlerts(alerts){
     const alertsContainer = document.querySelector(".alerts > ul");
@@ -46,3 +47,4 @@ async function init(){
 }
 
 init();
+enableNavigation();

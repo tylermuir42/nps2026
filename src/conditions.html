@@ -12,7 +12,7 @@
       landed here by accident, to find the real website visit
       <a href="parkUrl">[park name]</a>
     </p>
-    <div class="skip-links" aria-label="short-cut links" role="navigation">
+    <nav class="skip-links" aria-label="Skip links">
       <ul>
         <li>
           <a
@@ -39,7 +39,7 @@
           >
         </li>
       </ul>
-    </div>
+    </nav>
     <header>
     <section class="global-header">
     <a href="index.html" class="site-title"
@@ -56,17 +56,38 @@
         </svg>
         <span class="visually-hidden">Search</span>
         </a>
-        <button id="global-nav-toggle">
-        <svg class="icon">
-            <use
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xlink:href="/images/sprite.symbol.svg#menu"
-            ></use>
-        </svg>
-        <span class="visually-hidden">Open</span> Menu
+        <button
+          id="global-nav-toggle"
+          class="global-nav__toggle"
+          aria-expanded="false"
+          aria-label="Open Menu"
+        >
+          <div class="global-nav__toggle--closed">
+            <svg class="icon">
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="/images/sprite.symbol.svg#menu"
+              ></use>
+            </svg>
+            <span class="visually-hidden">Open</span> Menu
+          </div>
+          <div class="global-nav__toggle--open">
+            <svg class="icon">
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="/images/sprite.symbol.svg#close"
+              ></use>
+            </svg>
+            Close
+          </div>
         </button>
     </div>
     </section>
+    <nav class="global-nav" aria-label="Global NPS navigation">
+      <ul>
+        <li><a href="index.html"><span class="nav-bullet" aria-hidden="true">•</span> Plan your visit <span class="nav-arrow" aria-hidden="true">▼</span></a></li>
+      </ul>
+    </nav>
     <section id="park-header">
     <div class="hero-banner">
         <img src="" alt="" />
@@ -78,7 +99,7 @@
         </p>
         </div>
     </div>
-    <nav class="park-nav">
+    <nav class="park-nav" id="local-nav">
         <ul>
         <li>
             <a href="#">
@@ -147,15 +168,15 @@
       </section>
       <section class = "visitor">
         <h2>Visitor Services</h2>
-        <details name="current-details">
+        <details>
             <summary>Visitor Centers</summary>
             <ul></ul>
         </details>
       </section>
       <section class="activities">
         <h2>Activities</h2>
-        <details name="current-details">
-            <summary>All Activiites</summary>
+        <details>
+            <summary>All Activities</summary>
             <ul></ul>
         </details>
       </section>

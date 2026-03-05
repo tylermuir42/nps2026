@@ -107,6 +107,14 @@
   color: white;
   text-decoration: none;
 }
+
+.global-header a:focus-visible,
+.global-header button:focus-visible,
+.global-nav a:focus-visible,
+.park-nav a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 .global-header .icon {
   width: 20px;
   height: 20px;
@@ -193,4 +201,13 @@
 .park-nav svg {
   width: 24px;
   height: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .park-nav > ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+  }
 }
