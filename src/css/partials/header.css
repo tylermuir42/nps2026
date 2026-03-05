@@ -27,45 +27,110 @@
   border-top: 1px solid #333;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.5s;
+  transition: max-height 0.5s ease;
   background-color: var(--bs-black);
+  padding: 0 0 1rem;
 }
 
-.global-nav ul {
+.global-nav.show {
+  max-height: 1200px;
+  overflow-y: auto;
+}
+
+.global-nav__section-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bs-grey-3);
+  margin: 1rem 1rem 0.5rem;
+  padding: 0;
+}
+
+.global-nav__list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 
-.global-nav a {
-  display: block;
-  padding: 1rem;
+.global-nav__list > li {
+  border-bottom: 1px solid var(--bs-grey-5);
+}
+
+.global-nav__split-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+}
+
+.global-nav__split-button a {
+  flex: 1;
+  padding: 0.75rem 1rem;
   color: white;
   text-decoration: none;
+  display: block;
 }
 
-.global-nav a:hover {
+.global-nav__split-button a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.global-nav .nav-bullet {
-  margin-right: 0.35em;
-}
-
-.global-nav .nav-arrow {
-  margin-left: 0.35em;
-  font-size: 0.75em;
-  vertical-align: middle;
-}
-
-.global-nav button{
-  background-color: transparent;
+.global-nav__split-button__toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: transparent;
   border: 0;
-  padding: 1rem;
+  color: white;
   cursor: pointer;
 }
 
-.global-nav svg{
+.global-nav__split-button__toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.global-nav__split-button__toggle .icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.global-nav__split-button__toggle[aria-expanded="true"] .icon {
+  transform: rotate(-90deg);
+}
+
+.global-nav__submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.global-nav__list > li:has(.global-nav__split-button__toggle[aria-expanded="true"]) .global-nav__submenu {
+  max-height: 20rem;
+}
+
+.global-nav__submenu a {
+  display: block;
+  padding: 0.6rem 1rem 0.6rem 2rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.global-nav__submenu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.global-nav svg {
   --icon-color: white;
 }
 
@@ -85,10 +150,6 @@
 
 .global-nav__toggle[aria-expanded="true"] .global-nav__toggle--open {
   display: flex;
-}
-
-.global-nav.show{
-  max-height: 1000px;
 }
 
 .global-header {
@@ -111,6 +172,7 @@
 .global-header a:focus-visible,
 .global-header button:focus-visible,
 .global-nav a:focus-visible,
+.global-nav .global-nav__split-button__toggle:focus-visible,
 .park-nav a:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
@@ -209,5 +271,75 @@
     gap: 0.5rem;
     justify-content: center;
     padding: 0.5rem 1rem;
+  }
+}
+
+/* Desktop: dropdown with three-column layout (same formatting, not fullscreen) */
+@media screen and (min-width: 1024px) {
+  .global-nav.show {
+    max-height: none;
+    padding: 0 0 1.5rem;
+    overflow: visible;
+  }
+
+  /* Hide section heading on desktop; column links are the headings */
+  .global-nav.show .global-nav__section-heading {
+    display: none;
+  }
+
+  /* Three-column layout */
+  .global-nav.show .global-nav__list--nps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    padding: 1.5rem 2rem 0;
+    margin: 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .global-nav.show .global-nav__list--nps > li {
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Hide toggle buttons on desktop; column heading is the link */
+  .global-nav.show .global-nav__split-button__toggle {
+    display: none;
+  }
+
+  .global-nav.show .global-nav__split-button {
+    min-height: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .global-nav.show .global-nav__split-button a {
+    padding: 0 0 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    pointer-events: auto;
+  }
+
+  /* Submenus always visible in desktop dropdown */
+  .global-nav.show .global-nav__submenu {
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+    padding: 0;
+  }
+
+  .global-nav.show .global-nav__submenu a {
+    padding: 0.35rem 0 0.6rem;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .global-nav.show .global-nav__submenu a:hover {
+    text-decoration: underline;
   }
 }
