@@ -152,14 +152,13 @@ export function vcDirectionsTemplate(data) {
 }
 
 export function vcContactsTemplate(data) {
+  // Per project requirements: use the first email and first phone number.
   const emailObj = getFirst(data?.contacts?.emailAddresses);
   const email =
     emailObj?.emailAddress ?? emailObj?.email ?? data?.contacts?.emailAddress ?? "";
 
-  const phoneNumbers = data?.contacts?.phoneNumbers ?? [];
-  const voice =
-    phoneNumbers.find((n) => n.type === "Voice") ?? getFirst(phoneNumbers) ?? {};
-  const phone = voice.phoneNumber ?? data?.contacts?.phoneNumber ?? "";
+  const phoneObj = getFirst(data?.contacts?.phoneNumbers);
+  const phone = phoneObj?.phoneNumber ?? data?.contacts?.phoneNumber ?? "";
 
   const mailto = email ? `mailto:${email}` : "mailto:";
   const tel = phone ? `tel:${formatTel(phone)}` : "tel:";
